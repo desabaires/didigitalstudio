@@ -108,16 +108,22 @@ const FAQS = [
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+  const closeMenu = () => setMenuOpen(false);
   return (
     <header className={`di-nav ${scrolled ? "scrolled" : ""}`}>
       <div className="di-nav-inner">
-        <a href="#top" className="di-logo-link">
+        <a href="#top" className="di-logo-link" onClick={closeMenu}>
           <DILogoMark size={36} animated />
           <span className="di-logo-text">
             DI <span className="di-logo-accent">Digital Studio</span>
@@ -130,7 +136,29 @@ function Nav() {
           <a href="#faq">FAQ</a>
           <a href="#contacto">Contacto</a>
         </nav>
-        <a href="#contacto" className="di-btn di-btn-primary di-btn-sm">
+        <a href="#contacto" className="di-btn di-btn-primary di-btn-sm di-nav-cta">
+          Trabajemos juntos
+        </a>
+        <button
+          className={`di-burger ${menuOpen ? "is-open" : ""}`}
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={menuOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div className={`di-mobile-menu ${menuOpen ? "is-open" : ""}`}>
+        <nav className="di-mobile-links">
+          <a href="#servicios" onClick={closeMenu}>Servicios</a>
+          <a href="#proceso" onClick={closeMenu}>Proceso</a>
+          <a href="#stack" onClick={closeMenu}>Stack</a>
+          <a href="#faq" onClick={closeMenu}>FAQ</a>
+          <a href="#contacto" onClick={closeMenu}>Contacto</a>
+        </nav>
+        <a href="#contacto" onClick={closeMenu} className="di-btn di-btn-primary di-mobile-cta">
           Trabajemos juntos
         </a>
       </div>
