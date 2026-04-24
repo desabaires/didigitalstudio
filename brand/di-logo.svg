@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="di-stroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#A78BFA"></stop>
+      <stop offset="0.55" stop-color="#22D3EE"></stop>
+      <stop offset="1" stop-color="#EC4899"></stop>
+    </linearGradient>
+    <radialGradient id="di-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7C3AED" stop-opacity="0.55"></stop>
+      <stop offset="0.6" stop-color="#22D3EE" stop-opacity="0.12"></stop>
+      <stop offset="1" stop-color="#07070B" stop-opacity="0"></stop>
+    </radialGradient>
+    <radialGradient id="di-dot" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#FFFFFF"></stop>
+      <stop offset="0.55" stop-color="#67E8F9"></stop>
+      <stop offset="1" stop-color="#7C3AED"></stop>
+    </radialGradient>
+  </defs>
+  
+  <circle cx="100" cy="100" r="64" fill="url(#di-glow)"></circle>
+  
+  <path d="M52 48 H92 C118 48 138 71 138 100 C138 129 118 152 92 152 H52 Z" stroke="url(#di-stroke)" stroke-width="8" stroke-linejoin="round" fill="none"></path>
+  
+  <rect x="152" y="84" width="10" height="68" rx="3" fill="url(#di-stroke)"></rect>
+  
+  <circle cx="157" cy="62" r="8" fill="url(#di-dot)"></circle>
+  <circle cx="157" cy="62" r="14" fill="none" stroke="url(#di-stroke)" stroke-width="0.8" opacity="0.5"></circle>
+  <circle cx="157" cy="62" r="20" fill="none" stroke="url(#di-stroke)" stroke-width="0.6" opacity="0.25"></circle>
+</svg>

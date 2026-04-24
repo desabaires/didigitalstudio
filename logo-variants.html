@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DI Digital Studio — Logo / Isotipo variantes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#07070b; --soft:#0d0d14; --text:#f5f5f7; --dim:#a1a1aa; --muted:#71717a; --border:rgba(255,255,255,0.08); --border-strong:rgba(255,255,255,0.16); --v:#7c3aed; --vs:#a78bfa; --c:#22d3ee; --cs:#67e8f9; --p:#ec4899; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:#050508;color:var(--text);padding:60px 32px;min-height:100vh}
+  .wrap{max-width:1400px;margin:0 auto}
+  h1{font-size:40px;font-weight:700;letter-spacing:-0.03em;margin-bottom:10px}
+  .lead{color:var(--dim);font-size:17px;max-width:780px;line-height:1.6;margin-bottom:56px}
+  .section-title{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--c);text-transform:uppercase;letter-spacing:0.14em;margin:72px 0 20px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px}
+  .card{display:flex;flex-direction:column;gap:14px}
+  .preview{width:100%;aspect-ratio:1/1;background:var(--bg);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative}
+  .preview svg{width:100%;height:100%;display:block}
+  .label{display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:0.08em}
+  .label strong{color:var(--text);font-family:'Inter',sans-serif;font-size:14px;font-weight:500;text-transform:none;letter-spacing:0}
+  .notes{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:16px;padding:24px;font-size:14px;line-height:1.7;color:var(--dim);margin-top:48px}
+  .notes b{color:var(--text)}
+  .notes code{font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,0.06);padding:2px 8px;border-radius:4px;font-size:12.5px;color:var(--c)}
+  /* Locked/final row */
+  .lock-row{display:flex;gap:48px;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,rgba(124,58,237,0.1),rgba(34,211,238,0.05));border:1px solid var(--border);border-radius:24px;padding:40px;margin:40px 0}
+  .lock-preview{width:180px;height:180px;background:var(--bg);border-radius:20px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .lock-preview svg{width:78%;height:78%}
+  .lock-info h2{font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:8px}
+  .lock-info p{color:var(--dim);max-width:460px;line-height:1.55;font-size:15px}
+  .lock-info .mono{font-family:'JetBrains Mono',monospace;color:var(--c);font-size:12px;text-transform:uppercase;letter-spacing:0.1em;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Isotipo con iniciales — variantes</h1>
+  <p class="lead">
+    12 variaciones usando <b style="color:#fff">DI</b> / <b style="color:#fff">Di</b> como isotipo (las iniciales de los apellidos de los fundadores). Todas mantienen la paleta, el dot orbital y la identidad visual del sistema actual.
+    Las primeras 3 usan el enfoque más fuerte: el "dot central" convertido en el punto de la <b style="color:#fff">i</b> minúscula, que es una pista visual muy clara y única.
+  </p>
+
+  <div class="section-title">// Recomendado · Di con dot como punto de la i</div>
+  <div class="grid">
+
+    <!-- A1 — D outlined + i lowercase with orbital dot -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="a1g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="a1glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7c3aed" stop-opacity="0.55"/><stop offset="0.6" stop-color="#22d3ee" stop-opacity="0.12"/><stop offset="1" stop-color="#07070b" stop-opacity="0"/></radialGradient>
+            <radialGradient id="a1dot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#67e8f9"/><stop offset="1" stop-color="#7c3aed"/></radialGradient>
+          </defs>
+          <circle cx="100" cy="100" r="64" fill="url(#a1glow)"/>
+          <!-- D -->
+          <path d="M52 48 H92 C118 48 138 71 138 100 C138 129 118 152 92 152 H52 Z" stroke="url(#a1g)" stroke-width="8" stroke-linejoin="round" fill="none"/>
+          <!-- i stem -->
+          <rect x="152" y="84" width="10" height="68" rx="3" fill="url(#a1g)"/>
+          <!-- i dot (glowing orb = el isotipo original) -->
+          <circle cx="157" cy="62" r="8" fill="url(#a1dot)"/>
+          <circle cx="157" cy="62" r="14" fill="none" stroke="url(#a1g)" stroke-width="0.8" opacity="0.5"/>
+          <circle cx="157" cy="62" r="20" fill="none" stroke="url(#a1g)" stroke-width="0.6" opacity="0.25"/>
+        </svg>
+      </div>
+      <div class="label"><strong>A1 · Di outline + orb</strong><span>recomendado</span></div>
+    </div>
+
+    <!-- A2 — Same but filled D, stronger -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="a2g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="a2glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7c3aed" stop-opacity="0.5"/><stop offset="1" stop-color="#07070b" stop-opacity="0"/></radialGradient>
+            <radialGradient id="a2dot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#67e8f9"/><stop offset="1" stop-color="#7c3aed"/></radialGradient>
+          </defs>
+          <circle cx="100" cy="100" r="64" fill="url(#a2glow)"/>
+          <path d="M52 48 H92 C118 48 138 71 138 100 C138 129 118 152 92 152 H52 Z M66 64 H92 C109 64 122 80 122 100 C122 120 109 136 92 136 H66 Z" fill="url(#a2g)" fill-rule="evenodd"/>
+          <rect x="152" y="84" width="10" height="68" rx="3" fill="url(#a2g)"/>
+          <circle cx="157" cy="62" r="8" fill="url(#a2dot)"/>
+        </svg>
+      </div>
+      <div class="label"><strong>A2 · Di filled + orb</strong><span>más peso visual</span></div>
+    </div>
+
+    <!-- A3 — D with inner dot (keeps original mark) + small i beside -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="a3g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="a3glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7c3aed" stop-opacity="0.55"/><stop offset="1" stop-color="#07070b" stop-opacity="0"/></radialGradient>
+            <radialGradient id="a3dot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#67e8f9"/><stop offset="1" stop-color="#7c3aed"/></radialGradient>
+          </defs>
+          <circle cx="100" cy="100" r="62" fill="url(#a3glow)"/>
+          <!-- D with dot inside -->
+          <path d="M42 52 H82 C108 52 128 75 128 104 C128 133 108 156 82 156 H42 Z" stroke="url(#a3g)" stroke-width="7" stroke-linejoin="round" fill="none"/>
+          <circle cx="88" cy="104" r="6" fill="url(#a3dot)"/>
+          <circle cx="88" cy="104" r="11" fill="none" stroke="url(#a3g)" stroke-width="0.6" opacity="0.4"/>
+          <!-- small i with regular dot -->
+          <rect x="148" y="92" width="9" height="64" rx="3" fill="url(#a3g)"/>
+          <circle cx="152.5" cy="78" r="6" fill="url(#a3g)"/>
+        </svg>
+      </div>
+      <div class="label"><strong>A3 · Di con orb dentro de la D</strong><span>hereda el iso actual</span></div>
+    </div>
+
+  </div>
+
+  <div class="section-title">// DI mayúscula · geometric sans</div>
+  <div class="grid">
+
+    <!-- B1 — D outlined + I bar -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="b1g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="b1glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7c3aed" stop-opacity="0.45"/><stop offset="1" stop-color="#07070b" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="100" cy="100" r="64" fill="url(#b1glow)"/>
+          <path d="M42 48 H86 C112 48 132 71 132 100 C132 129 112 152 86 152 H42 Z" stroke="url(#b1g)" stroke-width="8" stroke-linejoin="round" fill="none"/>
+          <rect x="148" y="48" width="11" height="104" rx="2" fill="url(#b1g)"/>
+        </svg>
+      </div>
+      <div class="label"><strong>B1 · DI geometric</strong><span>minimal</span></div>
+    </div>
+
+    <!-- B2 — DI inside rounded square badge -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="b2g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+          </defs>
+          <rect x="32" y="32" width="136" height="136" rx="32" fill="none" stroke="url(#b2g)" stroke-width="6"/>
+          <text x="100" y="130" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="84" letter-spacing="-4" fill="url(#b2g)">DI</text>
+        </svg>
+      </div>
+      <div class="label"><strong>B2 · DI badge</strong><span>tipo app-icon</span></div>
+    </div>
+
+    <!-- B3 — DI filled badge with dot -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="b3g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7c3aed"/><stop offset="0.5" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="b3dot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#67e8f9"/><stop offset="1" stop-color="#7c3aed"/></radialGradient>
+          </defs>
+          <rect x="28" y="28" width="144" height="144" rx="36" fill="url(#b3g)"/>
+          <text x="94" y="134" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="92" letter-spacing="-5" fill="#07070b">DI</text>
+          <circle cx="150" cy="56" r="7" fill="url(#b3dot)"/>
+        </svg>
+      </div>
+      <div class="label"><strong>B3 · DI badge filled</strong><span>high contrast</span></div>
+    </div>
+
+  </div>
+
+  <div class="section-title">// DI monogramado · letras encastradas</div>
+  <div class="grid">
+
+    <!-- C1 — D + I stacked / overlapping -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="c1g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="c1glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7c3aed" stop-opacity="0.5"/><stop offset="1" stop-color="#07070b" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="100" cy="100" r="62" fill="url(#c1glow)"/>
+          <path d="M50 42 H98 C126 42 148 67 148 100 C148 133 126 158 98 158 H50 Z" stroke="url(#c1g)" stroke-width="7" stroke-linejoin="round" fill="none"/>
+          <!-- I cruza por el medio -->
+          <rect x="95" y="42" width="10" height="116" rx="2" fill="#07070b"/>
+          <rect x="96.5" y="42" width="7" height="116" rx="2" fill="url(#c1g)"/>
+        </svg>
+      </div>
+      <div class="label"><strong>C1 · DI superpuesto</strong><span>monograma</span></div>
+    </div>
+
+    <!-- C2 — D with I as the right stroke -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="c2g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="c2dot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#67e8f9"/><stop offset="1" stop-color="#7c3aed"/></radialGradient>
+          </defs>
+          <!-- Curved right side (D) + vertical left (I) sharing structure -->
+          <rect x="44" y="44" width="12" height="112" rx="2" fill="url(#c2g)"/>
+          <path d="M56 50 C102 50 140 72 140 100 C140 128 102 150 56 150" stroke="url(#c2g)" stroke-width="12" fill="none" stroke-linecap="round"/>
+          <circle cx="142" cy="100" r="7" fill="url(#c2dot)"/>
+        </svg>
+      </div>
+      <div class="label"><strong>C2 · DI encastrado</strong><span>abstracto</span></div>
+    </div>
+
+    <!-- C3 — Di lowercase custom letterform -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="c3g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+          </defs>
+          <text x="100" y="140" text-anchor="middle" font-family="Space Grotesk,sans-serif" font-weight="700" font-size="130" letter-spacing="-8" fill="url(#c3g)">Di</text>
+        </svg>
+      </div>
+      <div class="label"><strong>C3 · Di · Space Grotesk</strong><span>wordmark tipográfico</span></div>
+    </div>
+
+  </div>
+
+  <div class="section-title">// Dot tratado como punto de la i · variaciones</div>
+  <div class="grid">
+
+    <!-- D1 — Di sans bold with orb dot -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="d1g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="d1dot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#67e8f9"/><stop offset="1" stop-color="#7c3aed"/></radialGradient>
+            <radialGradient id="d1glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7c3aed" stop-opacity="0.45"/><stop offset="1" stop-color="#07070b" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="100" cy="110" r="60" fill="url(#d1glow)"/>
+          <text x="90" y="148" text-anchor="middle" font-family="Inter,sans-serif" font-weight="800" font-size="130" letter-spacing="-8" fill="url(#d1g)">D</text>
+          <!-- i con orb arriba -->
+          <rect x="132" y="90" width="11" height="60" rx="2" fill="url(#d1g)"/>
+          <circle cx="137.5" cy="72" r="9" fill="url(#d1dot)"/>
+          <circle cx="137.5" cy="72" r="14" fill="none" stroke="url(#d1g)" stroke-width="0.8" opacity="0.45"/>
+        </svg>
+      </div>
+      <div class="label"><strong>D1 · Di bold + orb</strong><span>tipográfico</span></div>
+    </div>
+
+    <!-- D2 — Mono-style Di with coded dot -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="d2g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="d2dot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#67e8f9"/><stop offset="1" stop-color="#7c3aed"/></radialGradient>
+          </defs>
+          <text x="66" y="140" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="500" font-size="110" fill="url(#d2g)">D</text>
+          <text x="130" y="140" text-anchor="middle" font-family="JetBrains Mono,monospace" font-weight="500" font-size="110" fill="url(#d2g)">i</text>
+          <!-- sobreescribe el dot de la i con orb -->
+          <circle cx="130" cy="76" r="4" fill="#07070b"/>
+          <circle cx="130" cy="76" r="7" fill="url(#d2dot)"/>
+        </svg>
+      </div>
+      <div class="label"><strong>D2 · Di mono + orb</strong><span>dev / code feel</span></div>
+    </div>
+
+    <!-- D3 — D with i embedded inside -->
+    <div class="card">
+      <div class="preview">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="d3g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#a78bfa"/><stop offset="0.55" stop-color="#22d3ee"/><stop offset="1" stop-color="#ec4899"/></linearGradient>
+            <radialGradient id="d3dot" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#67e8f9"/><stop offset="1" stop-color="#7c3aed"/></radialGradient>
+            <radialGradient id="d3glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#7c3aed" stop-opacity="0.5"/><stop offset="1" stop-color="#07070b" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="100" cy="100" r="64" fill="url(#d3glow)"/>
+          <path d="M40 40 H90 C120 40 144 67 144 100 C144 133 120 160 90 160 H40 Z" stroke="url(#d3g)" stroke-width="8" stroke-linejoin="round" fill="none"/>
+          <!-- i adentro de la D -->
+          <rect x="100" y="96" width="8" height="46" rx="2" fill="url(#d3g)"/>
+          <circle cx="104" cy="80" r="7" fill="url(#d3dot)"/>
+          <circle cx="104" cy="80" r="12" fill="none" stroke="url(#d3g)" stroke-width="0.6" opacity="0.35"/>
+        </svg>
+      </div>
+      <div class="label"><strong>D3 · D + i anidada</strong><span>el orb = punto de la i</span></div>
+    </div>
+
+  </div>
+
+  <div class="notes">
+    <b style="color:#fff">Mi recomendación → A1 o D3.</b><br/>
+    Mantienen el "orb brillante" que ya era el corazón del isotipo original, pero ahora tiene significado semántico: <b>es el punto de la <code>i</code> minúscula</b>. Con una lectura: <code>Di</code> = iniciales + dot. Visualmente fuerte, conceptualmente limpio.<br/><br/>
+    <b>B1 / B2 / B3</b> — si preferís <code>DI</code> en mayúscula, más corporativo.<br/>
+    <b>C3 / D1 / D2</b> — si querés que el logotipo sea puramente tipográfico (más flexible en escalas chicas).<br/><br/>
+    Decime cuál te gusta y la propago a toda la landing + kit de Instagram. Si querés, también puedo hibridar dos (ej: isotipo A1 + logotipo "DI Digital Studio" en el texto).
+  </div>
+</div>
+</body>
+</html>

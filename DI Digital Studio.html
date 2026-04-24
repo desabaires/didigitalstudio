@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DI Digital Studio — Mockup web + Instagram</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared/tokens.css" />
+  <link rel="stylesheet" href="web/landing.css" />
+  <link rel="stylesheet" href="instagram/ig.css" />
+
+  <style>
+    body { margin: 0; }
+    /* iframe artboards so internal CSS doesn't leak */
+    .art-iframe {
+      display: block;
+      border: 0;
+      width: 100%;
+      height: 100%;
+      background: #07070b;
+    }
+    /* Device frame */
+    .phone-frame {
+      background: #0a0a0f;
+      border-radius: 44px;
+      padding: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.08);
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .phone-screen {
+      width: 100%;
+      height: 100%;
+      border-radius: 34px;
+      overflow: hidden;
+      background: #07070b;
+    }
+    /* Brand panel (logo + colors + type) */
+    .brand-sheet { width: 100%; height: 100%; background: #07070b; color: #f5f5f7; padding: 48px; font-family: var(--di-sans); display: grid; grid-template-rows: auto auto 1fr auto; gap: 40px; box-sizing: border-box; }
+    .bs-head { display: flex; justify-content: space-between; align-items: flex-start; }
+    .bs-title { font-size: 36px; font-weight: 700; letter-spacing: -0.02em; }
+    .bs-mono { font-family: var(--di-mono); color: #22d3ee; font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; }
+    .bs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    .bs-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 18px; padding: 28px; }
+    .bs-card h3 { font-size: 15px; font-weight: 600; color: #a1a1aa; margin: 0 0 18px; font-family: var(--di-mono); text-transform: uppercase; letter-spacing: 0.1em; }
+    .bs-swatch { display: flex; flex-direction: column; gap: 10px; }
+    .bs-swatch > div { display: flex; align-items: center; gap: 12px; }
+    .bs-swatch i { display: block; width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.12); flex-shrink: 0; }
+    .bs-swatch b { font-family: var(--di-mono); font-size: 13px; color: #f5f5f7; font-weight: 500; }
+    .bs-swatch small { font-family: var(--di-mono); font-size: 12px; color: #71717a; }
+    .bs-typeblock h4 { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; margin: 0 0 4px; color: #f5f5f7; }
+    .bs-typeblock p { font-family: var(--di-mono); font-size: 13px; color: #71717a; margin: 0; text-transform: uppercase; letter-spacing: 0.1em; }
+    .bs-logo-row { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="design-canvas.jsx"></script>
+  <script type="text/babel" src="shared/logo.jsx"></script>
+  <script type="text/babel" src="instagram/ig-components.jsx"></script>
+
+  <script type="text/babel">
+    /* ---------- Brand sheet artboard (render in iframe-free div) ---------- */
+    function BrandSheet() {
+      return (
+        <div className="brand-sheet">
+          <div className="bs-head">
+            <div>
+              <div className="bs-mono" style={{marginBottom: 12}}>// sistema de marca</div>
+              <div className="bs-title">DI Digital Studio — Brand</div>
+            </div>
+            <div style={{fontFamily:'var(--di-mono)', fontSize:13, color:'#71717a'}}>v1.0 · abril 2026</div>
+          </div>
+
+          <div className="bs-logo-row">
+            <div style={{display:'flex', alignItems:'center', gap:20}}>
+              <DILogoMark size={120} animated />
+              <DILogoMark size={64} />
+              <DILogoMark size={36} />
+            </div>
+            <div style={{height:80, width:1, background:'rgba(255,255,255,0.1)'}}></div>
+            <DILogo size={42} showTagline />
+          </div>
+
+          <div className="bs-grid">
+            <div className="bs-card">
+              <h3>Paleta</h3>
+              <div className="bs-swatch">
+                <div><i style={{background:'#07070b'}}></i><div><b>BG Deep</b><br/><small>#07070B</small></div></div>
+                <div><i style={{background:'#0d0d14'}}></i><div><b>BG Soft</b><br/><small>#0D0D14</small></div></div>
+                <div><i style={{background:'#7c3aed'}}></i><div><b>Violet</b><br/><small>#7C3AED</small></div></div>
+                <div><i style={{background:'#22d3ee'}}></i><div><b>Cyan</b><br/><small>#22D3EE</small></div></div>
+                <div><i style={{background:'#ec4899'}}></i><div><b>Accent · Pink</b><br/><small>#EC4899</small></div></div>
+                <div><i style={{background:'linear-gradient(135deg,#a78bfa,#22d3ee,#ec4899)'}}></i><div><b>Gradient</b><br/><small>violet → cyan → pink</small></div></div>
+              </div>
+            </div>
+
+            <div className="bs-card">
+              <h3>Tipografía</h3>
+              <div className="bs-typeblock">
+                <h4 style={{fontFamily:'Inter'}}>Aa</h4>
+                <p>Inter · 300–800 · titulares & UI</p>
+              </div>
+              <div className="bs-typeblock" style={{marginTop:24}}>
+                <h4 style={{fontFamily:'JetBrains Mono', fontWeight:500, fontSize:44}}>{'</>'}</h4>
+                <p>JetBrains Mono · eyebrow, código, chips</p>
+              </div>
+            </div>
+
+            <div className="bs-card">
+              <h3>Tono de voz</h3>
+              <ul style={{listStyle:'none', padding:0, margin:0, display:'flex', flexDirection:'column', gap:10, fontSize:14, color:'#d4d4d8', lineHeight:1.6}}>
+                <li><b style={{color:'#22d3ee'}}>Directo.</b> Sin adornos. "Entendemos tu negocio" &gt; "Nos sumergimos holísticamente".</li>
+                <li><b style={{color:'#22d3ee'}}>Rioplatense.</b> Vos / tenés / escribinos.</li>
+                <li><b style={{color:'#22d3ee'}}>Técnico honesto.</b> Hablamos de trade-offs, no de hype.</li>
+                <li><b style={{color:'#22d3ee'}}>Concreto.</b> Números y entregables, no adjetivos.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style={{fontFamily:'var(--di-mono)', fontSize:12, color:'#71717a', letterSpacing:'0.08em'}}>
+            // mismos tokens se usan en landing web y kit de instagram — un solo sistema
+          </div>
+        </div>
+      );
+    }
+
+    /* ---------- Instagram grid (feed preview) ---------- */
+    function IGFeedPreview() {
+      const posts = [PostManifesto, PostLaunch, PostQuote, PostTechTip, PostServiceAI, PostServiceSoftware, PostProcess, PostCTA, PostManifesto];
+      return (
+        <div style={{width:'100%', height:'100%', background:'#050508', padding:36, boxSizing:'border-box', display:'flex', flexDirection:'column', gap:24, fontFamily:'var(--di-sans)'}}>
+          {/* Profile header */}
+          <div style={{display:'flex', alignItems:'center', gap:28}}>
+            <div style={{width:100, height:100, borderRadius:'50%', padding:3, background:'linear-gradient(135deg,#a78bfa,#22d3ee,#ec4899)'}}>
+              <div style={{width:'100%', height:'100%', borderRadius:'50%', background:'#07070b', display:'flex', alignItems:'center', justifyContent:'center'}}>
+                <DILogoMark size={72} animated />
+              </div>
+            </div>
+            <div style={{flex:1, color:'#f5f5f7'}}>
+              <div style={{display:'flex', alignItems:'center', gap:16, marginBottom:8}}>
+                <span style={{fontSize:22, fontWeight:600}}>di.digitalstudio</span>
+                <span style={{padding:'6px 16px', background:'#0095f6', color:'#fff', borderRadius:8, fontSize:13, fontWeight:600}}>Seguir</span>
+              </div>
+              <div style={{display:'flex', gap:32, fontSize:14, color:'#d4d4d8', marginBottom:10}}>
+                <span><b style={{color:'#f5f5f7'}}>48</b> posts</span>
+                <span><b style={{color:'#f5f5f7'}}>1.248</b> seguidores</span>
+                <span><b style={{color:'#f5f5f7'}}>132</b> seguidos</span>
+              </div>
+              <div style={{fontWeight:700, fontSize:14, color:'#f5f5f7'}}>DI Digital Studio</div>
+              <div style={{fontSize:13, color:'#d4d4d8', lineHeight:1.5}}>
+                Software que impulsa tu negocio.<br/>
+                SaaS · Webapps · Automation · IA<br/>
+                <span style={{color:'#22d3ee'}}>didigital.studio</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Highlights row */}
+          <div style={{display:'flex', gap:20, paddingTop:8}}>
+            {[HighlightServicios, HighlightProceso, HighlightCasos, HighlightIA, HighlightContacto].map((H, i) => {
+              const labels = ['servicios','proceso','casos','ia · tips','contacto'];
+              return (
+                <div key={i} style={{display:'flex', flexDirection:'column', alignItems:'center', gap:8}}>
+                  <div style={{width:86, height:86, borderRadius:'50%', overflow:'hidden', border:'2px solid rgba(255,255,255,0.2)', position:'relative'}}>
+                    <div style={{position:'absolute', top:0, left:0, transform:`scale(${86/1080})`, transformOrigin:'top left'}}><H/></div>
+                  </div>
+                  <span style={{fontFamily:'var(--di-mono)', fontSize:11, color:'#d4d4d8', textTransform:'uppercase', letterSpacing:'0.06em'}}>{labels[i]}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          <div style={{height:1, background:'rgba(255,255,255,0.1)'}}></div>
+
+          {/* Feed 3-col */}
+          <div style={{display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:4, flex:1}}>
+            {posts.map((P, i) => (
+              <div key={i} style={{aspectRatio:'4/5', position:'relative', overflow:'hidden', background:'#0d0d14'}}>
+                <div style={{position:'absolute', top:0, left:0, width:1080, height:1350, transform:'scale(0.24)', transformOrigin:'top left'}}>
+                  <P/>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    /* ---------- Post artboards: full-size posts in a scaled container ---------- */
+    function PostArtboard({ Comp, width = 540, height = 675 }) {
+      return (
+        <div style={{width, height, overflow:'hidden', background:'#050508', position:'relative'}}>
+          <div style={{position:'absolute', top:0, left:0, width:1080, height:1350, transform:`scale(${width/1080})`, transformOrigin:'top left'}}>
+            <Comp/>
+          </div>
+        </div>
+      );
+    }
+
+    function HighlightArtboard({ Comp, size = 360 }) {
+      return (
+        <div style={{width:size, height:size, overflow:'hidden', position:'relative', borderRadius:'50%'}}>
+          <div style={{position:'absolute', top:0, left:0, width:1080, height:1080, transform:`scale(${size/1080})`, transformOrigin:'top left'}}>
+            <Comp/>
+          </div>
+        </div>
+      );
+    }
+
+    /* ---------- Main canvas ---------- */
+    function App() {
+      return (
+        <DesignCanvas title="DI Digital Studio" subtitle="Mockup completo: sistema de marca, landing web y kit de Instagram">
+
+          <DCSection id="brand" title="01 · Sistema de marca" subtitle="Logo, paleta, tipografía y tono — el cimiento de todo lo demás.">
+            <DCArtboard id="brand-sheet" label="Brand sheet v1" width={1300} height={820}>
+              <BrandSheet/>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="web" title="02 · Landing web" subtitle="Versión completa navegable. Abrí en pantalla completa (↗ arriba a la derecha de cada artboard) para ver todo el scroll.">
+            <DCArtboard id="web-desktop" label="Desktop · 1440w" width={1440} height={900}>
+              <iframe className="art-iframe" src="web/landing.html" title="Landing desktop"></iframe>
+            </DCArtboard>
+            <DCArtboard id="web-mobile" label="Mobile · 390w (iPhone)" width={440} height={900}>
+              <div style={{width:'100%', height:'100%', background:'#0a0a0f', display:'flex', alignItems:'center', justifyContent:'center', padding:20, boxSizing:'border-box'}}>
+                <div className="phone-frame" style={{maxWidth:400}}>
+                  <div className="phone-screen">
+                    <iframe className="art-iframe" src="web/landing.html" title="Landing mobile" style={{width:390, height:'100%', transform:'scale(1)', transformOrigin:'top left'}}></iframe>
+                  </div>
+                </div>
+              </div>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="ig-profile" title="03 · Instagram · Perfil" subtitle="Así se ve el feed + highlights + bio en el perfil del negocio.">
+            <DCArtboard id="ig-feed" label="Perfil · feed + highlights" width={860} height={980}>
+              <IGFeedPreview/>
+            </DCArtboard>
+          </DCSection>
+
+          <DCSection id="ig-posts" title="04 · Instagram · 8 plantillas de feed" subtitle="1080 × 1350 px · carruseles y singles. Reordenables, editables en IG como conjunto consistente.">
+            <DCArtboard id="p1" label="01 · Manifiesto" width={400} height={500}><PostArtboard Comp={PostManifesto} width={400} height={500}/></DCArtboard>
+            <DCArtboard id="p2" label="02 · Software a medida" width={400} height={500}><PostArtboard Comp={PostServiceSoftware} width={400} height={500}/></DCArtboard>
+            <DCArtboard id="p3" label="03 · Tip técnico" width={400} height={500}><PostArtboard Comp={PostTechTip} width={400} height={500}/></DCArtboard>
+            <DCArtboard id="p4" label="04 · Lanzamiento" width={400} height={500}><PostArtboard Comp={PostLaunch} width={400} height={500}/></DCArtboard>
+            <DCArtboard id="p5" label="05 · IA" width={400} height={500}><PostArtboard Comp={PostServiceAI} width={400} height={500}/></DCArtboard>
+            <DCArtboard id="p6" label="06 · Quote de marca" width={400} height={500}><PostArtboard Comp={PostQuote} width={400} height={500}/></DCArtboard>
+            <DCArtboard id="p7" label="07 · Proceso" width={400} height={500}><PostArtboard Comp={PostProcess} width={400} height={500}/></DCArtboard>
+            <DCArtboard id="p8" label="08 · CTA · Contacto" width={400} height={500}><PostArtboard Comp={PostCTA} width={400} height={500}/></DCArtboard>
+          </DCSection>
+
+          <DCSection id="ig-highlights" title="05 · Instagram · 5 portadas de destacadas" subtitle="1080 × 1080 px · preview recortado en círculo como se ve en el perfil.">
+            <DCArtboard id="h1" label="Servicios" width={260} height={260}><HighlightArtboard Comp={HighlightServicios} size={260}/></DCArtboard>
+            <DCArtboard id="h2" label="Proceso" width={260} height={260}><HighlightArtboard Comp={HighlightProceso} size={260}/></DCArtboard>
+            <DCArtboard id="h3" label="Casos" width={260} height={260}><HighlightArtboard Comp={HighlightCasos} size={260}/></DCArtboard>
+            <DCArtboard id="h4" label="IA · Tips" width={260} height={260}><HighlightArtboard Comp={HighlightIA} size={260}/></DCArtboard>
+            <DCArtboard id="h5" label="Contacto" width={260} height={260}><HighlightArtboard Comp={HighlightContacto} size={260}/></DCArtboard>
+          </DCSection>
+
+          <DCSection id="ig-copys" title="06 · Instagram · Copys y captions" subtitle="Texto listo para pegar. Incluye estructura, hashtags y CTA por tipo de post.">
+            <DCArtboard id="ig-copys-sheet" label="Captions · 8 posts" width={1100} height={900}>
+              <iframe className="art-iframe" src="instagram/instagram-kit.html#captions" title="Captions"></iframe>
+            </DCArtboard>
+          </DCSection>
+
+        </DesignCanvas>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+  </script>
+</body>
+</html>

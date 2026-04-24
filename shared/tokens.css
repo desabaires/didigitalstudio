@@ -1,0 +1,52 @@
+/* ============================================
+   DI Digital Studio — Design Tokens (shared)
+   ============================================ */
+
+:root {
+  /* Surfaces */
+  --di-bg: #07070b;
+  --di-bg-soft: #0d0d14;
+  --di-bg-raised: #101018;
+  --di-surface: rgba(255, 255, 255, 0.035);
+  --di-surface-hover: rgba(255, 255, 255, 0.065);
+  --di-border: rgba(255, 255, 255, 0.08);
+  --di-border-strong: rgba(255, 255, 255, 0.16);
+
+  /* Text */
+  --di-text: #f5f5f7;
+  --di-text-dim: #a1a1aa;
+  --di-text-muted: #71717a;
+
+  /* Brand (violet → cyan; pink sólo como acento puntual) */
+  --di-violet: #7c3aed;
+  --di-violet-soft: #a78bfa;
+  --di-cyan: #22d3ee;
+  --di-cyan-soft: #67e8f9;
+  --di-accent: #ec4899;
+
+  /* Gradients */
+  --di-grad: linear-gradient(135deg, #7c3aed 0%, #22d3ee 100%);
+  --di-grad-tri: linear-gradient(135deg, #a78bfa 0%, #22d3ee 55%, #ec4899 100%);
+
+  /* Shape */
+  --di-r-sm: 10px;
+  --di-r-md: 16px;
+  --di-r-lg: 24px;
+  --di-r-xl: 32px;
+
+  /* Type */
+  --di-sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --di-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --di-display: 'Inter', -apple-system, system-ui, sans-serif;
+}
+
+.di-gradient-text {
+  background: var(--di-grad-tri);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.di-mono { font-family: var(--di-mono); }

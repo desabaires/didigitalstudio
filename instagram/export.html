@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<title>DI · Export PNGs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../shared/tokens.css" />
+<link rel="stylesheet" href="ig.css" />
+<script src="https://unpkg.com/html-to-image@1.11.11/dist/html-to-image.js"></script>
+<script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
+<style>
+  body { background:#0a0a0e; margin:0; padding:40px; font-family:var(--di-sans); color:#eee; }
+  .bar {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(10,10,14,0.95); backdrop-filter: blur(10px);
+    padding: 20px 0; margin: -40px -40px 32px; padding-left: 40px; padding-right: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+  }
+  .bar h1 { margin: 0; font-size: 20px; font-weight: 600; margin-right: auto; }
+  button {
+    background: linear-gradient(135deg, #22d3ee, #a78bfa);
+    color: #000; border: 0; padding: 10px 20px; font-weight: 600;
+    cursor: pointer; border-radius: 8px; font-family: inherit; font-size: 14px;
+  }
+  button.ghost { background: transparent; color: #eee; border: 1px solid rgba(255,255,255,0.2); }
+  button:disabled { opacity: 0.5; cursor: wait; }
+  #log { font-family: var(--di-mono); font-size: 12px; color: #71717a; margin-left: 16px; }
+  .slot { margin: 48px 0; }
+  .slot-head { display:flex; gap:16px; align-items:center; margin-bottom:14px; }
+  .slot-head h2 { font-family:var(--di-mono); font-size:12px; color:#22d3ee; letter-spacing:.14em; text-transform:uppercase; margin:0; font-weight:500; }
+  .slot-head button { padding: 6px 12px; font-size: 12px; }
+  .frame-wrap {
+    display:inline-block;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    overflow: hidden;
+    transform-origin: top left;
+  }
+  .frame-scaler { transform: scale(0.45); transform-origin: top left; }
+  .frame-scaler .frame-wrap { transform: none; }
+  .lead { color: #a1a1aa; font-size: 14px; max-width: 720px; line-height: 1.6; margin-bottom: 24px; }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <h1>Exportar PNGs · DI Digital Studio</h1>
+    <button id="dl-all">⬇ Descargar todo (.zip)</button>
+    <button id="dl-individual" class="ghost">PNGs individuales</button>
+    <span id="log"></span>
+  </div>
+  <p class="lead">
+    Previews reducidas al 45% para que entren en pantalla. Al descargar, cada PNG se genera a <strong>1080×1350</strong> (posts) o <strong>1080×1080</strong> (highlights) — listos para Instagram.
+  </p>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="../shared/logo.jsx"></script>
+  <script type="text/babel" src="ig-components.jsx"></script>
+  <script type="text/babel">
+    const items = [
+      { id: 'post-01-manifiesto', label: 'POST 01 · Manifiesto', Comp: PostManifesto },
+      { id: 'post-02-servicio-software', label: 'POST 02 · Servicio · Software', Comp: PostServiceSoftware },
+      { id: 'post-03-tip-tecnico', label: 'POST 03 · Tip técnico', Comp: PostTechTip },
+      { id: 'post-04-lanzamiento', label: 'POST 04 · Lanzamiento', Comp: PostLaunch },
+      { id: 'post-05-servicio-ia', label: 'POST 05 · Servicio · IA', Comp: PostServiceAI },
+      { id: 'post-06-quote', label: 'POST 06 · Quote', Comp: PostQuote },
+      { id: 'post-07-proceso', label: 'POST 07 · Proceso', Comp: PostProcess },
+      { id: 'post-08-cta', label: 'POST 08 · CTA', Comp: PostCTA },
+      { id: 'highlight-01-servicios', label: 'HIGHLIGHT · Servicios', Comp: HighlightServicios },
+      { id: 'highlight-02-proceso', label: 'HIGHLIGHT · Proceso', Comp: HighlightProceso },
+      { id: 'highlight-03-casos', label: 'HIGHLIGHT · Casos', Comp: HighlightCasos },
+      { id: 'highlight-04-ia', label: 'HIGHLIGHT · IA · Tips', Comp: HighlightIA },
+      { id: 'highlight-05-contacto', label: 'HIGHLIGHT · Contacto', Comp: HighlightContacto },
+    ];
+    window.__items = items;
+
+    function Slot({ it }) {
+      const onDownload = async () => {
+        const node = document.querySelector(`#${it.id} > *`);
+        const rect = node.getBoundingClientRect();
+        // Temporarily remove parent scale to get a crisp 1:1 render
+        const scaler = node.closest('.frame-scaler');
+        const prev = scaler.style.transform;
+        scaler.style.transform = 'scale(1)';
+        scaler.style.position = 'absolute';
+        scaler.style.left = '-99999px';
+        await new Promise(r => setTimeout(r, 100));
+        const dataUrl = await window.htmlToImage.toPng(node, {
+          width: 1080, height: node.offsetHeight,
+          pixelRatio: 1, cacheBust: true, backgroundColor: '#07070b'
+        });
+        scaler.style.transform = prev;
+        scaler.style.position = '';
+        scaler.style.left = '';
+        const a = document.createElement('a');
+        a.href = dataUrl; a.download = it.id + '.png';
+        document.body.appendChild(a); a.click(); a.remove();
+      };
+      return (
+        <div className="slot">
+          <div className="slot-head">
+            <h2>{it.label}</h2>
+            <button onClick={onDownload}>⬇ PNG</button>
+          </div>
+          <div className="frame-scaler">
+            <div className="frame-wrap" id={it.id}><it.Comp /></div>
+          </div>
+        </div>
+      );
+    }
+
+    function App() {
+      return <div>{items.map(it => <Slot key={it.id} it={it} />)}</div>;
+    }
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+    // Wait for mount
+    async function renderAllAsBlobs(onProgress) {
+      const blobs = {};
+      for (const it of items) {
+        onProgress && onProgress(it.label);
+        const node = document.querySelector(`#${it.id} > *`);
+        const scaler = node.closest('.frame-scaler');
+        const prev = scaler.style.transform;
+        scaler.style.transform = 'scale(1)';
+        scaler.style.position = 'absolute';
+        scaler.style.left = '-99999px';
+        await new Promise(r => setTimeout(r, 200));
+        const blob = await window.htmlToImage.toBlob(node, {
+          width: 1080, height: node.offsetHeight,
+          pixelRatio: 1, cacheBust: true, backgroundColor: '#07070b'
+        });
+        scaler.style.transform = prev;
+        scaler.style.position = '';
+        scaler.style.left = '';
+        blobs[it.id + '.png'] = blob;
+      }
+      return blobs;
+    }
+
+    document.getElementById('dl-all').onclick = async () => {
+      const btn = document.getElementById('dl-all');
+      const log = document.getElementById('log');
+      btn.disabled = true;
+      try {
+        const blobs = await renderAllAsBlobs(msg => log.textContent = 'Generando: ' + msg);
+        log.textContent = 'Empaquetando zip...';
+        const zip = new JSZip();
+        for (const [name, blob] of Object.entries(blobs)) {
+          zip.file(name, blob);
+        }
+        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(zipBlob);
+        a.download = 'di-digital-studio-instagram.zip';
+        a.click();
+        log.textContent = '✓ Descargado';
+      } catch (e) {
+        log.textContent = '✗ Error: ' + e.message;
+      }
+      btn.disabled = false;
+    };
+
+    document.getElementById('dl-individual').onclick = async () => {
+      const btn = document.getElementById('dl-individual');
+      const log = document.getElementById('log');
+      btn.disabled = true;
+      for (const it of items) {
+        log.textContent = 'Descargando: ' + it.label;
+        document.querySelector(`#${it.id}`).parentElement.parentElement.querySelector('button').click();
+        await new Promise(r => setTimeout(r, 1500));
+      }
+      log.textContent = '✓ Todas descargadas';
+      btn.disabled = false;
+    };
+  </script>
+</body>
+</html>

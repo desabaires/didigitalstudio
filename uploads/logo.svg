@@ -1,0 +1,46 @@
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  
+  <rect width="1080" height="1080" fill="#07070B"></rect>
+
+  
+  <g opacity="0.08">
+    <path d="M0 180H1080M0 360H1080M0 540H1080M0 720H1080M0 900H1080" stroke="#FFFFFF" stroke-width="1"></path>
+    <path d="M180 0V1080M360 0V1080M540 0V1080M720 0V1080M900 0V1080" stroke="#FFFFFF" stroke-width="1"></path>
+  </g>
+
+  
+  <circle cx="540" cy="540" r="340" fill="url(#glow)" opacity="0.55"></circle>
+
+  
+  <g transform="translate(290 290)">
+    <path d="M40 40H220C319.411 40 400 120.589 400 220C400 319.411 319.411 400 220 400H40V40Z" stroke="url(#strokeGrad)" stroke-width="44" stroke-linejoin="round" fill="url(#fillGrad)"></path>
+
+    
+    <circle cx="300" cy="220" r="26" fill="url(#dotGrad)"></circle>
+  </g>
+
+  <defs>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540 540) rotate(90) scale(340)">
+      <stop stop-color="#7C3AED" stop-opacity="0.7"></stop>
+      <stop offset="0.5" stop-color="#22D3EE" stop-opacity="0.25"></stop>
+      <stop offset="1" stop-color="#07070B" stop-opacity="0"></stop>
+    </radialGradient>
+
+    <linearGradient id="strokeGrad" x1="40" y1="40" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A78BFA"></stop>
+      <stop offset="0.5" stop-color="#22D3EE"></stop>
+      <stop offset="1" stop-color="#EC4899"></stop>
+    </linearGradient>
+
+    <linearGradient id="fillGrad" x1="40" y1="40" x2="400" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED" stop-opacity="0.08"></stop>
+      <stop offset="1" stop-color="#22D3EE" stop-opacity="0.04"></stop>
+    </linearGradient>
+
+    <radialGradient id="dotGrad" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(300 220) rotate(90) scale(26)">
+      <stop stop-color="#FFFFFF"></stop>
+      <stop offset="0.6" stop-color="#22D3EE"></stop>
+      <stop offset="1" stop-color="#7C3AED"></stop>
+    </radialGradient>
+  </defs>
+</svg>

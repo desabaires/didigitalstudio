@@ -1,0 +1,130 @@
+/* ============================================
+   DI Digital Studio — Instagram Kit styles
+   ============================================ */
+
+/* Tarjetas / frames — todas fondo oscuro consistente */
+.ig-frame {
+  position: relative;
+  overflow: hidden;
+  background: #07070b;
+  color: #f5f5f7;
+  font-family: var(--di-sans);
+}
+.ig-frame * { box-sizing: border-box; }
+
+/* Feed post 1080x1350 (4:5) */
+.ig-post { width: 1080px; height: 1350px; }
+/* Story / highlight 1080x1920 (9:16) */
+.ig-story { width: 1080px; height: 1920px; }
+/* Highlight cover visible area is square top */
+.ig-highlight { width: 1080px; height: 1080px; }
+
+/* Backgrounds reused across IG templates */
+.ig-grid-bg::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 40%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 40%, transparent 85%);
+  pointer-events: none;
+}
+.ig-glow-violet {
+  position: absolute;
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,0.55), transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+}
+.ig-glow-cyan {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,211,238,0.4), transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+}
+
+.ig-brandbar {
+  display: flex; align-items: center; gap: 14px;
+  font-family: var(--di-sans);
+}
+.ig-brandbar .ig-brand-text {
+  font-weight: 700; font-size: 24px;
+  letter-spacing: -0.02em;
+}
+.ig-brandbar .ig-brand-text span { color: #a1a1aa; font-weight: 400; }
+
+.ig-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--di-mono);
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--di-cyan);
+}
+.ig-eyebrow::before {
+  content: ''; width: 32px; height: 1px; background: var(--di-cyan);
+}
+
+.ig-handle {
+  font-family: var(--di-mono);
+  font-size: 20px;
+  color: #a1a1aa;
+  letter-spacing: 0.02em;
+}
+
+.ig-swipe {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 22px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  font-family: var(--di-mono);
+  font-size: 20px;
+  color: #f5f5f7;
+}
+.ig-swipe svg { width: 22px; height: 22px; }
+
+.ig-gradient-text {
+  background: linear-gradient(135deg, #a78bfa 0%, #22d3ee 55%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.ig-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
+/* Caption cards under posts */
+.caption-card {
+  background: #0d0d14;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 28px;
+  font-family: var(--di-sans);
+  color: #e5e5e7;
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 620px;
+}
+.caption-card .caption-title {
+  font-family: var(--di-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #22d3ee;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.caption-card .caption-hashtags {
+  margin-top: 14px;
+  color: #7dd3fc;
+  font-size: 14px;
+}
+.caption-card p { margin-bottom: 10px; }
